@@ -25,7 +25,7 @@ func main() {
 
 // findExecutible will search current working
 // directory for the desired exe file and return its name as a string
-func findExecutable(directory string, keywords ...string) string {
+func findExecutable(directory string, keywords ...string) (string, bool) {
 	// get all files into one variable
 	allfiles := GetAllFiles(directory)
 
@@ -34,11 +34,11 @@ func findExecutable(directory string, keywords ...string) string {
 		isCompleteMatch, _ := checkSubstrings(item, keywords)
 
 		if isCompleteMatch == true {
-			return item
+			return item, true
 		}
 	}
 
-	return "Item not found"
+	return "Item not found", false
 }
 
 func setTarget(target int) bool {
@@ -99,9 +99,23 @@ func checkSubstrings(str string, subs []string) (bool, int) {
 }
 
 func networkInstall() {
+	// get the name of the executable (SDITool)
+	sdiExe, isFound := findExecutable(getwd()+"/Scripts", "SDI", "x64")
+
+	// execute the installer
+	if isFound {
+
+	}
 
 }
 
+// driverInstall silently installs the DCU program
 func driverInstall() {
+	// get the name of the executable (DCU)
+	dciExe, isFound := findExecutable(getwd()+"/Scripts", "DCU")
 
+	// execute the installer
+	if isFound {
+
+	}
 }
