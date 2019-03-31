@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -13,12 +14,16 @@ const dcuFlag int = 1001
 var targetInstall int
 
 func main() {
-	installChoice := os.Args[1]
-	switch installChoice {
-	case networkFlag:
-		networkInstall()
-	case dcuFlag:
-		driverInstall()
+	installChoice, err := strconv.Atoi(os.Args[1])
+	if err == nil {
+		switch installChoice {
+		case networkFlag:
+			networkInstall()
+		case dcuFlag:
+			driverInstall()
+		}
+	} else {
+		fmt.Println("Error while inputting args")
 	}
 
 }
