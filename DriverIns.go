@@ -1,7 +1,6 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
@@ -14,22 +13,21 @@ import (
 
 // Provides the user interface and root of method execution
 func main() {
-	// Reader that will read from stdin pipe
-	reader := bufio.NewReader(os.Stdin)
 
 	// Create user interface
 	welcomeScreen := figure.NewFigure("Quinton's Driver Installer", "", true)
 	welcomeScreen.Print()
 
 	fmt.Printf("(1)Install Network\n(2)Dell Command Updat\nOr both(ENTER)?\n")
-	decision, err := reader.ReadByte()
+	var i int
+	_, err := fmt.Scanf("%d", &i)
 
 	if err != nil {
 		networkInstall()
 		driverInstall()
-	} else if decision == 1 {
+	} else if i == 1 {
 		networkInstall()
-	} else if decision == 2 {
+	} else if i == 2 {
 		driverInstall()
 	} else {
 		fmt.Println("Invalid argument")
