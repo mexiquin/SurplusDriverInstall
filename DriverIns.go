@@ -12,11 +12,6 @@ import (
 	"github.com/common-nighthawk/go-figure"
 )
 
-const networkFlag int = 1000
-const dcuFlag int = 1001
-
-var targetInstall int
-
 // Provides the user interface and root of method execution
 func main() {
 	// Reader that will read from stdin pipe
@@ -57,15 +52,6 @@ func findExecutable(directory string, keywords ...string) (string, bool) {
 	}
 
 	return "Item not found", false
-}
-
-func setTarget(target int) bool {
-	if target == dcuFlag || target == networkFlag {
-		targetInstall = target
-		return true
-	}
-
-	return false
 }
 
 // getwd gets current working directory
