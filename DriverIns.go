@@ -4,6 +4,7 @@ import (
 	"fmt"
 	"io/ioutil"
 	"os"
+	"os/exec"
 	"strconv"
 	"strings"
 )
@@ -94,7 +95,7 @@ func checkSubstrings(str string, subs []string) (bool, int) {
 
 	for _, sub := range subs {
 		if strings.Contains(str, sub) {
-			matches += 1
+			matches++
 		} else {
 			isCompleteMatch = false
 		}
@@ -109,7 +110,12 @@ func networkInstall() {
 
 	// execute the installer
 	if isFound {
+		cmd := exec.Command(sdiExe, "-autoinstall", "-nogui", "-showconsole", "-autoclose")
 
+		err := cmd.Run()
+		if err != nil {
+			fmt.Printf("Failed to execute %s\n", sdiExe)
+		}
 	}
 
 }
@@ -121,6 +127,12 @@ func driverInstall() {
 
 	// execute the installer
 	if isFound {
+		cmd := exec.Command(dciExe, "/s")
 
+		err := cmd.Run()
+
+		if err != nil {
+			fmt.Printf("Failed to execute %s\n", dciExe)
+		}
 	}
 }
