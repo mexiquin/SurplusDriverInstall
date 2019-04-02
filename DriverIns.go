@@ -1,12 +1,14 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"io/ioutil"
 	"os"
 	"os/exec"
-	"strconv"
 	"strings"
+
+	"github.com/common-nighthawk/go-figure"
 )
 
 const networkFlag int = 1000
@@ -14,19 +16,28 @@ const dcuFlag int = 1001
 
 var targetInstall int
 
+// Provides the user interface and root of method execution
 func main() {
-	installChoice, err := strconv.Atoi(os.Args[1])
-	if err == nil {
-		switch installChoice {
-		case networkFlag:
-			networkInstall()
-		case dcuFlag:
-			driverInstall()
-		}
-	} else {
-		fmt.Println("Error while inputting args")
-	}
+	// Reader that will read from stdin pipe
+	reader := bufio.NewReader(os.Stdin)
 
+	// Create user interface
+	welcomeScreen := figure.NewFigure("Quinton's Driver Installer", "", true)
+	welcomeScreen.Print()
+
+	fmt.Printf("(1)Install Network\n(2)Dell Command Updat\nOr both(ENTER)?\n")
+	decision, err := reader.ReadByte()
+
+	if err != nil {
+		networkInstall()
+		driverInstall()
+	} else if decision == 1 {
+		networkInstall()
+	} else if decision == 2 {
+		driverInstall()
+	} else {
+		fmt.Println("Invalid argument")
+	}
 }
 
 // findExecutible will search current working
