@@ -34,6 +34,8 @@ func main() {
 	} else {
 		fmt.Println("Invalid argument")
 	}
+
+	// Eventually want to implement: copy and paste MediaCreationTool to the desktop
 }
 
 // findExecutible will search current working
