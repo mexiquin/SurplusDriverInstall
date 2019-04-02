@@ -33,6 +33,7 @@ func main() {
 		driverInstall()
 	} else {
 		fmt.Println("Invalid argument")
+		time.Sleep(time.Second * 5)
 	}
 
 	// Eventually want to implement: copy and paste MediaCreationTool to the desktop
@@ -75,6 +76,7 @@ func GetAllFiles(directory string) []string {
 	files, err := ioutil.ReadDir(directory)
 	if err != nil {
 		print("OOPS, something went wrong with ReadDir()")
+		time.Sleep(time.Second * 5)
 	}
 
 	for _, item := range files {
