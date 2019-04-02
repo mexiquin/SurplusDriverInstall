@@ -7,6 +7,7 @@ import (
 	"os"
 	"os/exec"
 	"strings"
+	"time"
 
 	"github.com/common-nighthawk/go-figure"
 )
@@ -127,6 +128,9 @@ func networkInstall() {
 		if err != nil {
 			fmt.Printf("Failed to execute %s\n", sdiExe)
 		}
+	} else {
+		fmt.Println("Error: Could not find executable")
+		time.Sleep(time.Second * 5)
 	}
 
 }
@@ -145,5 +149,8 @@ func driverInstall() {
 		if err != nil {
 			fmt.Printf("Failed to execute %s\n", dciExe)
 		}
+	} else {
+		fmt.Println("Error: Could not find executable")
+		time.Sleep(time.Second * 5)
 	}
 }
