@@ -6,6 +6,6 @@ import (
 )
 
 func main() {
-	fmt.Println("Sdi mimic executable opened successfully")
+	fmt.Printf("SDITOOL mimic program executed successfully\n")
 	time.Sleep(time.Second * 5)
 }

@@ -11,6 +11,8 @@ import (
 	"github.com/common-nighthawk/go-figure"
 )
 
+var scriptsDir string = getwd() + "/Scripts/"
+
 // Provides the user interface and root of method execution
 func main() {
 
@@ -18,7 +20,7 @@ func main() {
 	welcomeScreen := figure.NewFigure("Quinton's Driver Installer", "", true)
 	welcomeScreen.Print()
 
-	fmt.Printf("(1)Install Network\n(2)Dell Command Updat\nOr both(ENTER)?\n")
+	fmt.Printf("(1)Install Network\n(2)Dell Command Update\nOr both(ENTER)?\n")
 	var i int
 	_, err := fmt.Scanf("%d", &i)
 
@@ -37,7 +39,7 @@ func main() {
 	// Eventually want to implement: copy and paste MediaCreationTool to the desktop
 }
 
-// findExecutible will search current working
+// findExecutable will search current working
 // directory for the desired exe file and return its name as a string
 func findExecutable(directory string, keywords ...string) (string, bool) {
 	// get all files into one variable
@@ -106,17 +108,19 @@ func checkSubstrings(str string, subs []string) (bool, int) {
 
 func networkInstall() {
 	// get the name of the executable (SDITool)
-	sdiExe, isFound := findExecutable(getwd()+"/Scripts", "SDI", "x64")
+	sdiExe, isFound := findExecutable(scriptsDir, "SDI", "x64")
 
 	// execute the installer
 	if isFound {
-		cmd := exec.Command(sdiExe) // "-autoinstall", "-nogui", "-showconsole", "-autoclose"
+		output, err := exec.Command(scriptsDir + sdiExe).Output() // "-autoinstall", "-nogui", "-showconsole", "-autoclose"
 
-		err := cmd.Run()
 		if err != nil {
 			fmt.Printf("Failed to execute %s\nError: %s", sdiExe, err)
 			time.Sleep(time.Second * 5)
 		}
+
+		fmt.Println(string(output))
+
 	} else {
 		fmt.Println("Error: Could not find executable")
 		fmt.Println(sdiExe)
@@ -128,18 +132,18 @@ func networkInstall() {
 // driverInstall silently installs the DCU program
 func driverInstall() {
 	// get the name of the executable (DCU)
-	dciExe, isFound := findExecutable(getwd()+"/Scripts", "DCU")
+	dciExe, isFound := findExecutable(scriptsDir, "DCU")
 
 	// execute the installer
 	if isFound {
-		cmd := exec.Command(dciExe, "/s")
-
-		err := cmd.Run()
+		output, err := exec.Command(scriptsDir + dciExe).Output() // "/s"
 
 		if err != nil {
 			fmt.Printf("Failed to execute %s\nError: %s", dciExe, err)
 			time.Sleep(time.Second * 5)
 		}
+
+		fmt.Println(string(output))
 	} else {
 		fmt.Println("Error: Could not find executable")
 		time.Sleep(time.Second * 5)
