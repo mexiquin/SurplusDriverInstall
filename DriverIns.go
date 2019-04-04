@@ -110,14 +110,16 @@ func networkInstall() {
 
 	// execute the installer
 	if isFound {
-		cmd := exec.Command(sdiExe, "-autoinstall", "-nogui", "-showconsole", "-autoclose")
+		cmd := exec.Command(sdiExe) // "-autoinstall", "-nogui", "-showconsole", "-autoclose"
 
 		err := cmd.Run()
 		if err != nil {
-			fmt.Printf("Failed to execute %s\n", sdiExe)
+			fmt.Printf("Failed to execute %s\nError: %s", sdiExe, err)
+			time.Sleep(time.Second * 5)
 		}
 	} else {
 		fmt.Println("Error: Could not find executable")
+		fmt.Println(sdiExe)
 		time.Sleep(time.Second * 5)
 	}
 
@@ -135,7 +137,8 @@ func driverInstall() {
 		err := cmd.Run()
 
 		if err != nil {
-			fmt.Printf("Failed to execute %s\n", dciExe)
+			fmt.Printf("Failed to execute %s\nError: %s", dciExe, err)
+			time.Sleep(time.Second * 5)
 		}
 	} else {
 		fmt.Println("Error: Could not find executable")
