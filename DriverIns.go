@@ -11,7 +11,7 @@ import (
 	"github.com/common-nighthawk/go-figure"
 )
 
-var scriptsDir string = getwd() + "/Scripts/"
+var scriptsDir = getwd() + "/Scripts/"
 var versionNum float32 = 1.0
 
 // Provides the user interface and root of method execution
@@ -31,6 +31,8 @@ func main() {
 	fmt.Printf("(ENTER) Install All\n(1)Install Network\n(2)Dell Command Update\n\n")
 	var i int
 	_, err := fmt.Scanf("%d", &i)
+
+	os.Chdir(scriptsDir)
 
 	if err != nil {
 		networkInstall()
@@ -116,11 +118,11 @@ func checkSubstrings(str string, subs []string) (bool, int) {
 
 func networkInstall() {
 	// get the name of the executable (SDITool)
-	sdiExe, isFound := findExecutable(scriptsDir, "SDI", "x64")
+	sdiExe, isFound := findExecutable(getwd(), "SDI", "x64")
 
 	// execute the installer
 	if isFound {
-		cmd := exec.Command(scriptsDir + sdiExe, "-autoinstall", "-nogui", "-showconsole", "-autoclose")
+		cmd := exec.Command(sdiExe, "-autoinstall", "-nogui", "-showconsole", "-autoclose")
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		cmd.Run()
@@ -136,11 +138,11 @@ func networkInstall() {
 // driverInstall silently installs the DCU program
 func driverInstall() {
 	// get the name of the executable (DCU)
-	dciExe, isFound := findExecutable(scriptsDir, "DCU")
+	dciExe, isFound := findExecutable(getwd(), "DCU")
 
 	// execute the installer
 	if isFound {
-		cmd := exec.Command(scriptsDir + dciExe, "/s")
+		cmd := exec.Command(dciExe, "/s")
 		cmd.Stdout = os.Stdout
 		cmd.Stderr = os.Stderr
 		cmd.Run()
