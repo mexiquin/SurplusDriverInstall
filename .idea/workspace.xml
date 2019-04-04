@@ -2,18 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c780c626-1c82-48a2-b76a-3567e52f9758" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.vscode/ipch/5070aa38a2d70a5c/mmap_address.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/ipch/e9915924d670ee5c/mmap_address.bin" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.vscode/settings.json" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/DriverIns.go" beforeDir="false" afterPath="$PROJECT_DIR$/DriverIns.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/DCU.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/DCU.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/SDI_x64.exe" beforeDir="false" afterPath="$PROJECT_DIR$/Scripts/SDI_x64.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/dcimimic/DCU.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/dcimimic/DCU.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/sdimimic/SDI_x64.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Scripts/sdimimic/SDI_x64.go" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/SurplusDriverInstall.exe" beforeDir="false" afterPath="$PROJECT_DIR$/SurplusDriverInstall.exe" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +15,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/DriverIns.go">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="221">
-              <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+            <state relative-caret-position="-44">
+              <caret line="122" column="104" selection-start-line="122" selection-start-column="104" selection-end-line="122" selection-end-column="104" />
               <folding>
                 <element signature="e#14#122#0" expanded="true" />
               </folding>
@@ -139,6 +128,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="DefaultGoTemplateProperty" value="Go Application" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="go.gopath.indexing.explicitly.defined" value="true" />
     <property name="go.import.settings.migrated" value="true" />
@@ -189,6 +179,7 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info id="Favorites" side_tool="true" />
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17857143" />
@@ -213,18 +204,6 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DlvLineBreakpoint">
-          <url>file://$PROJECT_DIR$/DriverIns.go</url>
-          <line>49</line>
-          <properties />
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/Scripts/DCU.go">
@@ -263,8 +242,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/DriverIns.go">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="22" column="58" selection-start-line="22" selection-start-column="58" selection-end-line="22" selection-end-column="58" />
+        <state relative-caret-position="-44">
+          <caret line="122" column="104" selection-start-line="122" selection-start-column="104" selection-end-line="122" selection-end-column="104" />
           <folding>
             <element signature="e#14#122#0" expanded="true" />
           </folding>

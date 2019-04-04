@@ -12,15 +12,23 @@ import (
 )
 
 var scriptsDir string = getwd() + "/Scripts/"
+var versionNum float32 = 1.0
 
 // Provides the user interface and root of method execution
 func main() {
 
 	// Create user interface
-	welcomeScreen := figure.NewFigure("Quinton's Driver Installer", "", true)
-	welcomeScreen.Print()
+	quintons := figure.NewFigure("Quinton's", "", true)
+	driver := figure.NewFigure("Driver", "", true)
+	instslr := figure.NewFigure("Installer", "", true)
 
-	fmt.Printf("(1)Install Network\n(2)Dell Command Update\nOr both(ENTER)?\n")
+	quintons.Print()
+	driver.Print()
+	instslr.Print()
+
+	fmt.Printf("\n%52s: %2.1f\n\n", "Version", versionNum)
+
+	fmt.Printf("(ENTER) Install All\n(1)Install Network\n(2)Dell Command Update\n\n")
 	var i int
 	_, err := fmt.Scanf("%d", &i)
 
@@ -112,14 +120,10 @@ func networkInstall() {
 
 	// execute the installer
 	if isFound {
-		output, err := exec.Command(scriptsDir + sdiExe).Output() // "-autoinstall", "-nogui", "-showconsole", "-autoclose"
-
-		if err != nil {
-			fmt.Printf("Failed to execute %s\nError: %s", sdiExe, err)
-			time.Sleep(time.Second * 5)
-		}
-
-		fmt.Println(string(output))
+		cmd := exec.Command(scriptsDir + sdiExe, "-autoinstall", "-nogui", "-showconsole", "-autoclose")
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		cmd.Run()
 
 	} else {
 		fmt.Println("Error: Could not find executable")
@@ -136,14 +140,11 @@ func driverInstall() {
 
 	// execute the installer
 	if isFound {
-		output, err := exec.Command(scriptsDir + dciExe).Output() // "/s"
+		cmd := exec.Command(scriptsDir + dciExe, "/s")
+		cmd.Stdout = os.Stdout
+		cmd.Stderr = os.Stderr
+		cmd.Run()
 
-		if err != nil {
-			fmt.Printf("Failed to execute %s\nError: %s", dciExe, err)
-			time.Sleep(time.Second * 5)
-		}
-
-		fmt.Println(string(output))
 	} else {
 		fmt.Println("Error: Could not find executable")
 		time.Sleep(time.Second * 5)
